@@ -7,6 +7,7 @@ GOGET=$(GOCMD) go
 VERSION=0.0.1
 BINARY_NAME=spendgrid
 APP_NAME=main.go
+ENV_FILE=./.env
 INPUT_DIR=./cmd
 OUTPUT_DIR=./bin
 
@@ -14,7 +15,7 @@ all: build
 
 build:
 	@echo "🛠️ Building $(BINARY_NAME)-$(VERSION)..."
-	@$(GOBUILD) -o $(OUTPUT_DIR)/$(BINARY_NAME) -v $(INPUT_DIR)/$(APP_NAME)
+	@ENV_FILE=$(ENV_FILE) $(GOBUILD) -o $(OUTPUT_DIR)/$(BINARY_NAME) -v $(INPUT_DIR)/$(APP_NAME)
 
 clean:
 	@echo "🧹 Cleaning..."
